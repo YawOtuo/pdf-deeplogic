@@ -17,7 +17,9 @@ from pdf.models import Text
 
 class TextForm(forms.Form):
 
-    file = forms.FileField()          
+    file = forms.FileField()  
+
+           
         
 
 
