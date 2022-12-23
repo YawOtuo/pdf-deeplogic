@@ -3,6 +3,14 @@
 
 {% block content %}
 <div class= 'container py-5 '>
-    Hello World 
+    <div class="col-sm-6 main_form" style="background-color: white;">
+        <form method="post"  enctype="multipart/form-data" style="margin-left: 5px; border: 1px solid  rgb(41, 36, 92); padding: 8%;">
+            {% csrf_token %}
+        {% load crispy_forms_tags %}
+        {{ form|crispy }}
+
+        <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+    </div>
 </div>
 {% endblock %}
