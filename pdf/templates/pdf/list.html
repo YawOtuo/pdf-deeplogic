@@ -1,0 +1,19 @@
+{% extends 'pdf/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class= 'container py-5 '>
+  <h1 class='font=weight-bold'>Pdfs List</h1>
+  {% if pdf_context %}
+  <ul>
+    {% for pdf in pdf_context %}
+      <li>
+        <a>{{ pdf.filename }} </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no pdfs yet in the library.</p>
+  {% endif %}
+</div>
+{% endblock %}
