@@ -10,10 +10,7 @@ from django.contrib.auth import login, authenticate , logout
 from django.contrib import messages
 from django.shortcuts import  render, redirect
 from django.contrib.auth.forms import AuthenticationForm #add this
-
 import io
-
-
 from nanonets import NANONETSOCR
 import environ
 env = environ.Env()
@@ -37,23 +34,23 @@ class IndexView(FormView):
 
     def post(self, request, *args, **kwargs ):
 
-        log_file = open('log.txt', 'w')
         file = request.FILES['file']
         # print(file.read(), file=log_file)
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
         uploaded_file_url = fs.url(filename)[1:]
-        print(uploaded_file_url)
+        # print(uploaded_file_url)
         model = NANONETSOCR()
         model.set_token("XQmXfZT6exouQq4zDoRSVsR3cuMVt6g1")
-        file_path = r"C:\Users\User\OneDrive\Desktop\sterl\wellfound\deeplogic\media\sample1.pdf"
+        file_path = r"C:\Users\User\OneDrive\Desktop\sterl\wellfound\deeplogic" + "/" + uploaded_file_url
         string = model.convert_to_string(file_path,formatting='lines and spaces') 
 
-        print(string)
+        # print(string)
+        # print(file_path)
 
         new_text = Text.objects.create(text=string, filename=file.name, file_path=uploaded_file_url)
         new_text.save()
-        print(new_text.pk)
+        # print(new_text.pk)
 
         # return render(request, self.template_name, {'form': self.form_class})
         return redirect('pdf:detail', pk=new_text.id)
@@ -66,7 +63,6 @@ class TextListView(ListView):
 
     def get_queryset(self):
         return Text.objects.all()
-            # Get 5 books containing the title war
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

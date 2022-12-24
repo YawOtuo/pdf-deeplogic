@@ -12,9 +12,6 @@ from django.core.mail import send_mail
 
 from pdf.models import Text
 
-# class DateInput(forms.DateInput):
-#     input_type = 'date'
-
 class TextForm(forms.Form):
 
     file = forms.FileField()  
