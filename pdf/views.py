@@ -126,7 +126,7 @@ class LoginView(TemplateView):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                return redirect("main:homepage")
+                return redirect("pdf:index")
             else:
                 messages.error(request,"Invalid username or password.")
         else:
@@ -141,4 +141,4 @@ class LogoutView(ListView):
     def get(self,request):
 
         logout(request)
-        return redirect("pdf:register")
+        return redirect("pdf:login")
