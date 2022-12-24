@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block content %}
-<div class= 'container py-5 '>
-   <div class='row align-items-center justify-content-center py-5 my-5'>
-        <div class="col-sm-6 main_form" style="background-color: white;">
-            <form class='form' method="post"  enctype="multipart/form-data" style="margin-left: 5px; border: 1px solid  rgb(41, 36, 92); padding: 8%;">
+<div class= 'container-fluid py-5 '>
+   <div class='row align-items-center justify-content-center py-5 '>
+        <div class="col-sm-6 main_form py-5" style="background-color: white;">
+            <form class='form py-5' method="post"  enctype="multipart/form-data" style="margin-left: 5px; border: 1px solid  rgb(41, 36, 92); padding: 8%;">
                 {% csrf_token %}
             {% load crispy_forms_tags %}
             {{ form|crispy }}
     
-            <input type="submit" value="Submit" class="btn btn-success">
+            <input type="submit" value="Submit" class="btn btn-success mt-2">
             </form>
         </div>
    </div>

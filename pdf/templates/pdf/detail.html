@@ -1,22 +1,29 @@
 {% extends 'pdf/layout.html' %}
 {% load static %}
+{% get_media_prefix %}
 
 {% block content %}
-<div class= 'container-fluid py-5 '>
-  <div class='row align-items-center justify-content-center'>
-     <div class='col-sm-6'>
-          <h1 class='font=weight-bold'>Pdfs List</h1>
+<div class= 'container py-2'>
           {% if pdf_context %}
-          <ul>
-              <li>
-                <a>{{ pdf_context.filename }} </a>
-                <p>{{ pdf_context.text }}</p>
-              </li>
+          <div class='row align-items-start justify-content-center'>
+             
+           <div class='col-sm-10'>
+            <h1>{{ pdf_context.filename }} </h1>
+            <a href="/{{ BASE_DIR}}{{ pdf_context.file_path }}" width=90%, height=90%
+                >Go to file</a>
+            <p class='mb-4'>{{ pdf_context.text | linebreaks | safe}}</p>
+                   
+           </div>
+          </div>
+              {% comment %} <li>
+                <p>{{ pdf_context.text | linebreaksbr | safe}}</p>
+                <a href="/{{ BASE_DIR}}{{ pdf_context.file_path }}" width=90%, height=90%
+                >Go to file</a>
+              </li> {% endcomment %}
           </ul>
           {% else %}
             <p>There are no pdfs yet in the library.</p>
           {% endif %}
-     </div>
-  </div>
+
 </div>
 {% endblock %}

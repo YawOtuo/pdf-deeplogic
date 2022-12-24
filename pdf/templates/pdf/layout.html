@@ -18,11 +18,9 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 
-  <script src="jquery-3.6.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>PDF-Deeplogic</title>
 </head>
-<body class="body">
+<body class="">
   {% block nav %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-nav" style="background-color:rgb(86, 40, 9)">
     <a class="navbar-brand" href="{% url 'pdf:index' %}">PDF Uploader</a>
@@ -39,7 +37,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'pdf:list' %}">My Files</a>
           </li>
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="{% url 'pdf:logout' %}">Sign Out</a>
         </li>
       

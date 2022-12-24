@@ -8,13 +8,20 @@
 
 <!--Login--> 
 <div class="container py-5">
-  <h1>Login</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ login_form|crispy }}
-    <button class="btn btn-primary" type="submit">Login</button>
-  </form>
-  <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+  <div class="row align-items-center justify-content-center py-5 my-5">
+    <div class="col-sm-3 brand_color_blur w-100 py-5 text-center">
+        <div class="py-5 my-5 font-weight-bold">PDF-DEEPLOGIC</div>
+    </div>
+     <div class="col-sm-6 brand_color_blur_border py-5 pl-5">
+          <h1>Login</h1>
+          <form method="POST">
+            {% csrf_token %}
+            {{ login_form|crispy }}
+            <button class="btn btn-primary mt-2" type="submit">Login</button>
+          </form>
+          <p class="text-left mt-2">Don't have an account? <a href="/register">Create an account</a>.</p>
+     </div>
+  </div>
 </div>
 
 {% endblock %}

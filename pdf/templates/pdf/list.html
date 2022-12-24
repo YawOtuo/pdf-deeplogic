@@ -2,17 +2,25 @@
 {% load static %}
 
 {% block content %}
-<div class= 'container py-5 '>
+<div class= 'container-fluid '>
     <div class='row align-items-center justify-content-center py-5 my-5'>
-  <div class='col-sm-6'>
+  <div class='col-sm-10 text-left'>
       <h1 class='font=weight-bold'>Uploaded Files</h1>
       {% if pdf_context %}
-      <ul>
+      <ul style="list-style-type: none";>
+        <div class='row align-items-center justify-content-center my-5 py-5 tex-dark w-100'>
+
+   
         {% for pdf in pdf_context %}
-          <li>
-            <a href="{% url 'pdf:detail' pdf.id %}"  > {{ pdf.filename }} </a>
-          </li>
+
+          <div class='col-sm-3 py-5 border border-white align-self-center brand_color_blur'>
+              <li style="list-style-type: none";>
+                <a href="{% url 'pdf:detail' pdf.id %}"  > {{ pdf.filename }} </a>
+              </li>
+          </div>
         {% endfor %}
+
+    </div>
       </ul>
       {% else %}
         <p>There are no pdfs yet in the library.</p>

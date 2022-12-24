@@ -2,19 +2,28 @@
 
 {% block nav %}
 {% endblock %}
-{% block content %} 
+{% block content %}
 
-{% load crispy_forms_tags %}         
+{% load crispy_forms_tags %}
 
-<!--Register--> 
-<div class="container py-5">
-	<h1>Register</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ register_form|crispy }}                    
-		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+<!--Register-->
+<div class="container py-5 my-5">
+    <div class='row align-items-center justify-content-center'>
+        <div class="col-sm-3 brand_color_blur py-5 text-center">
+            <div class="py-5 my-5">
+                <div class="py-5 my-5 font-weight-bold">PDF-DEEPLOGIC</div>
+            </div>
+        </div>
+        <div class='col-sm-6 brand_color_blur_border px-3'>
+            <h1>Register</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ register_form|crispy }}
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+            <p class="text-left">If you already have an account, <a href="/login">login</a> instead.</p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

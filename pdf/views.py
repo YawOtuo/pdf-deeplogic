@@ -42,8 +42,8 @@ class IndexView(FormView):
         # print(file.read(), file=log_file)
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
-        uploaded_file_url = fs.url(filename)
-
+        uploaded_file_url = fs.url(filename)[1:]
+        print(uploaded_file_url)
         model = NANONETSOCR()
         model.set_token("XQmXfZT6exouQq4zDoRSVsR3cuMVt6g1")
         file_path = r"C:\Users\User\OneDrive\Desktop\sterl\wellfound\deeplogic\media\sample1.pdf"
@@ -51,9 +51,12 @@ class IndexView(FormView):
 
         print(string)
 
-        Text.objects.create(text=string, filename=file.name)
+        new_text = Text.objects.create(text=string, filename=file.name, file_path=uploaded_file_url)
+        new_text.save()
+        print(new_text.pk)
 
-        return render(request, self.template_name, {'form': self.form_class})
+        # return render(request, self.template_name, {'form': self.form_class})
+        return redirect('pdf:detail', pk=new_text.id)
 
 
 class TextListView(ListView):
@@ -70,6 +73,7 @@ class TextListView(ListView):
         return context
 
     
+
 class TextDetailView(DetailView):
     model = Text
     template_name='pdf/detail.html'
@@ -79,6 +83,7 @@ class TextDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         return context
         
+
 class RegisterView(TemplateView):
     
     template_name = 'pdf/registration/register.html'
