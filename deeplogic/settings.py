@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure--mhs3_1-ee=(fud5)9e)lf9$w#)6#_r9-ua$nz1jlu0z$r6*8h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'https://stez-ocr.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
