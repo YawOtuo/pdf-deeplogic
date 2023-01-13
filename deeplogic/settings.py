@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import environ
+import dj_database_url
+
 env = environ.Env()
 environ.Env.read_env()
 
@@ -84,16 +86,15 @@ WSGI_APPLICATION = 'deeplogic.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
-        # 'USER': env("DB_USER"),
-        # 'PASSWORD': env("DB_PASSWORD"),
-        # 'HOST': env("DB_HOST"),
-        # 'PORT': env("DB_PORT"),
-    }
+    'default': dj_database_url.config(
+        default='postgres://...',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASE_URL = 'mysql://waoupcvajlm2n7k1:h1onjn4qm4istcvp@eyw6324oty5fsovx.cbetxkdyhwsb.us-east-'
 
 
 # Password validation
